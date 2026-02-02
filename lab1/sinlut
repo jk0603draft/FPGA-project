@@ -1,0 +1,18 @@
+module sin_lut(
+ input clk,
+ input [7:0] address,
+ output reg [15:0] data
+);
+
+ reg [0:15] rom [0:255];
+ 
+initial begin
+ $readmemh("sin_lut1.hex",rom);
+  end
+ 
+always@(posedge clk)
+begin
+ data <= ~rom[address];
+end
+
+endmodule
